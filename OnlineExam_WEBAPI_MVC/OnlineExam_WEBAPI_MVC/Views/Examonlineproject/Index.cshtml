@@ -1,0 +1,71 @@
+﻿@model IEnumerable<OnlineExam_WEBAPI_MVC.Models.OnlineExamClass>
+
+@{
+    ViewBag.Title = "Index";
+}
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+
+
+<h2>CREATING SIMPLE ONLINE EXAM</h2>
+
+<h3>WEB API MVC TUTORIALS</h3>
+
+<hr />
+
+@foreach (var item in Model)
+{
+    <table class="table">
+
+        <tr>
+            <td style="font-size:large; text-transform:capitalize">
+                @Html.DisplayFor(modelItem => item.Qid)
+                @Html.DisplayFor(modelItem => item.Question)
+            </td>
+        </tr>
+
+        <tr>
+            <td style="font-size:large">
+                <input type="radio" name="@item.Qid" value="@item.Option1" id="Option1" class="radiob" /> @item.Option1
+                <br />
+                <input type="radio" name="@item.Qid" value="@item.Option2" id="Option2" class="radiob" /> @item.Option2
+                <br />
+                <input type="radio" name="@item.Qid" value="@item.Option3" id="Option3" class="radiob" /> @item.Option3
+                <br />
+                <input type="radio" name="@item.Qid" value="@item.Option4" id="Option4" class="radiob" /> @item.Option4
+                <br />
+                <label id="lab1" name="@item.Qid" class="radiob" style="display:none; color:red;">Correct Answer : @item.corrans</label>
+            </td>
+        </tr>
+    </table>
+
+}
+<div style="font-size:large; display:flex; justify-content:center; align-items:center">
+    <button type="button" id="but1" onclick="displayResult();">Submit</button>
+</div>
+
+<hr />
+
+<label id="labresult"></label>
+
+<script>
+    $(document).ready(function () {
+        $("#but1").click(function () {
+            $(".radiob").show();
+            $(".radiob").attr("disabled", true);
+        });
+    });
+
+    function displayResult() {
+        document.getElementById("labresult").innerHTML = "";
+
+        var e = document.getElementsByTagName('input');
+        for (var i = 0; i < e.length; i++) {
+            if (e[i].type == "radio") {
+                if (e[i].checked) {
+                    document.getElementById("labresult").innerHTML
+                        += "Q" + e[i].name + ")" + "You Selected Answer is : " + e[i].value+"<br/>"
+                }
+            }
+        }
+    }
+</script>

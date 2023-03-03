@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ExamDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="OnlineExam">
+    <Key>
+      <PropertyRef Name="Qid" />
+    </Key>
+    <Property Name="Qid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Question" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="option1" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="option2" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="option3" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="option4" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Correctans" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityContainer Name="ExamDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="OnlineExams" EntityType="Self.OnlineExam" />
+  </EntityContainer>
+</Schema>
