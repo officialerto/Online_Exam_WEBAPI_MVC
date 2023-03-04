@@ -10,7 +10,7 @@ namespace OnlineExam_WEBAPI_MVC.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Title = "Home Page";
+            ViewBag.Title = "Home Pa";
 
             return View();
         }
